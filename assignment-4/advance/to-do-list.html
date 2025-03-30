@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        .container { width: 50%; margin: auto; padding: 20px; border: 2px solid #000000; border-radius: 10px; background: #f9f9f9; }
+        h2 { color: #0d00ff; }
+        input { width: 70%; padding: 10px; font-size: 16px; margin-bottom: 10px; }
+        button { padding: 10px 15px; font-size: 16px; cursor: pointer; background-color: #007BFF; color: white; border: none; border-radius: 5px; }
+        button:hover { background-color: #0e12cf; }
+        ul { list-style: none; padding: 0; }
+        li { background: white; padding: 10px; margin: 5px 0; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #ccc; }
+        .completed { text-decoration: line-through; color: gray; }
+        .delete-btn { background: red; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px; }
+        .delete-btn:hover { background: darkred; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>To-Do List</h2>
+        <input type="text" id="taskInput" placeholder="Enter a new task">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        function addTask() {
+            let taskInput = document.getElementById("taskInput").value.trim();
+            if (taskInput === "") return;
+
+            let taskList = document.getElementById("taskList");
+
+            let li = document.createElement("li");
+            li.innerHTML = `<span onclick="toggleComplete(this)">${taskInput}</span> 
+                            <button class="delete-btn" onclick="deleteTask(this)">Delete</button>`;
+            
+            taskList.appendChild(li);
+            document.getElementById("taskInput").value = ""; // Clear input field
+        }
+
+        function deleteTask(button) {
+            button.parentElement.remove();
+        }
+
+        function toggleComplete(task) {
+            task.classList.toggle("completed");
+        }
+    </script>
+
+</body>
+</html>

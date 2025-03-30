@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling & DOM Manipulation</title>
+    <style>
+        #text {
+            font-size: 20px;
+            color: black;
+        }
+        #image {
+            width: 200px;
+            height: auto;
+        }
+    </style>
+    <script>
+        function changeText() {
+            document.getElementById("text").innerText = "Text changed successfully!";
+        }
+
+        function changeStyle() {
+            let textElement = document.getElementById("text");
+            textElement.style.color = "red";
+            textElement.style.fontSize = "25px";
+            textElement.style.fontWeight = "bold";
+        }
+
+        function changeImage() {
+            document.getElementById("image").src = "image.jpg";
+        }
+    </script>
+</head>
+<body>
+    <h2>Event Handling & DOM Manipulation</h2>
+    
+    <p id="text">Click the buttons to change this text, style, or image.</p>
+    <button onclick="changeText()">Change Text</button>
+    <button onclick="changeStyle()">Change Style</button>
+    <button onclick="changeImage()">Change Image</button>
+    
+    <br><br>
+    <img id="image" src="image2.jpg" alt="Sample Image">
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!-- Section E: JavaScript Objects & AJAX -->
+
+<!-- date_math_ajax.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date, Math, and AJAX</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function showDate() {
+            document.getElementById("date").innerText = "Current Date & Time: " + new Date().toLocaleString();
+        }
+
+        function generateRandomNumber() {
+            document.getElementById("random-number").innerText = "Random Number: " + Math.floor(Math.random() * 100);
+        }
+
+        async function fetchWeather() {
+            const city = document.getElementById("city-input").value;
+            if (!city) {
+                document.getElementById("weather").innerText = "Please enter a city name.";
+                return;
+            }
+            const apiKey = "your_api_key_here"; // Replace with your OpenWeather API key
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+            try {
+                let response = await fetch(url);
+                let data = await response.json();
+                if (data.cod !== 200) {
+                    document.getElementById("weather").innerText = "City not found. Please try again.";
+                    return;
+                }
+                document.getElementById("weather").innerText = `Weather in ${city}: ${data.weather[0].description}, Temperature: ${data.main.temp}°C`;
+            } catch (error) {
+                document.getElementById("weather").innerText = "Error fetching weather data.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Date, Math, and AJAX</h2>
+    
+    <button onclick="showDate()">Show Date & Time</button>
+    <p id="date"></p>
+    
+    <button onclick="generateRandomNumber()">Generate Random Number</button>
+    <p id="random-number"></p>
+    
+    <input type="text" id="city-input" placeholder="Enter City Name">
+    <button onclick="fetchWeather()">Fetch Weather Data</button>
+    <p id="weather"></p>
+</body>
+</html>

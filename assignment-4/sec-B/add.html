@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Item Deletion</title>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+            alert("Form submitted successfully!");
+        }
+
+        function confirmDeletion(event) {
+            let confirmation = confirm("Are you sure you want to delete this item?");
+            if (confirmation) {
+                event.target.parentElement.remove();
+            }
+        }
+        function addItem() {
+            let newItem = prompt("Enter new item:");
+            if (newItem) {
+                let li = document.createElement("li");
+                li.innerHTML = `${newItem} <button onclick="confirmDeletion(event)">Delete</button>`;
+                document.getElementById("itemList").appendChild(li);
+            }
+        }
+    </script>
+</head>
+<body>
+    
+    <h2>Item List</h2>
+    <button onclick="addItem()">Add Item</button>
+    <ul id="itemList">
+        <li>Banana <button onclick="confirmDeletion(event)">Delete</button></li>
+        <li>Apple <button onclick="confirmDeletion(event)">Delete</button></li>
+        <li>Kiwi <button onclick="confirmDeletion(event)">Delete</button></li>
+        <li>Papaya <button onclick="confirmDeletion(event)">Delete</button></li>
+        <li>Carrot <button onclick="confirmDeletion(event)">Delete</button></li>
+    </ul>
+    
+    <script>
+        document.getElementById("myForm").addEventListener("submit", handleSubmit);
+    </script>
+</body>
+</html>

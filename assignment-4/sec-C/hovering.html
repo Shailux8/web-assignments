@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Effects with JavaScript</title>
+    <style>
+        #hoverBox {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 100px;
+            font-size: 18px;
+            border: 2px solid black;
+            margin: 50px auto;
+        }
+    </style>
+    <script>
+        function hoverEffectOn() {
+            let box = document.getElementById("hoverBox");
+            box.style.backgroundColor = "orange";
+            box.innerText = "Hovered!";
+        }
+
+        function hoverEffectOff() {
+            let box = document.getElementById("hoverBox");
+            box.style.backgroundColor = "lightblue";
+            box.innerText = "Hover over me";
+        }
+    </script>
+</head>
+<body>
+    <h2>Hover Effects with JavaScript</h2>
+    <div id="hoverBox" onmouseover="hoverEffectOn()" onmouseout="hoverEffectOff()">Hover over me</div>
+</body>
+</html>

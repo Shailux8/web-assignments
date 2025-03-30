@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Weather App</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        .container { width: 50%; margin: auto; padding: 20px; border: 2px solid #020202; border-radius: 10px; }
+        h2 { color: #242ca2; }
+        input { padding: 10px; width: 80%; margin: 10px 0; font-size: 16px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #f37c05; color: white; border: none; border-radius: 5px; }
+        button:hover { background-color: #08f64b; }
+        .weather-info { margin-top: 20px; font-size: 18px; color: #333; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Weather in Indian Cities</h2>
+        <input type="text" id="city" placeholder="Enter Indian city name (e.g., Mumbai, Delhi)">
+        <button onclick="getWeather()">Get Weather</button>
+
+        <div class="weather-info" id="weatherResult"></div>
+    </div>
+
+    <script>
+        function getWeather() {
+            let city = document.getElementById("city").value.trim();
+            let apiKey = "YOUR_API_KEY"; // Replace with your OpenWeather API key
+
+            // Ensure the search is limited to Indian cities only
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${city},IN&appid=${apiKey}&units=metric`;
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let response = JSON.parse(xhr.responseText);
+                        let weatherInfo = `
+                            <p><strong>City:</strong> ${response.name}, ${response.sys.country}</p>
+                            <p><strong>Temperature:</strong> ${response.main.temp}°C</p>
+                            <p><strong>Humidity:</strong> ${response.main.humidity}%</p>
+                            <p><strong>Wind Speed:</strong> ${response.wind.speed} m/s</p>
+                            <p><strong>Condition:</strong> ${response.weather[0].description}</p>
+                        `;
+                        document.getElementById("weatherResult").innerHTML = weatherInfo;
+                    } else {
+                        document.getElementById("weatherResult").innerHTML = "<p style='color:red;'>City not found in India. Try again!</p>";
+                    }
+                }
+            };
+
+            xhr.send();
+        }
+    </script>
+
+</body>
+</html>

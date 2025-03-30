@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Date & Time</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        table { width: 50%; margin: auto; border-collapse: collapse; }
+        th, td { padding: 15px; border: 1px solid #0d0d0d; font-size: 20px; }
+        th { background-color: #20c19e; color: white; }
+        td { font-weight: bold; color: #333; }
+    </style>
+</head>
+<body>
+
+    <h2>Current Date & Time</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+        <tr>
+            <td id="currentDate"></td>
+            <td id="currentTime"></td>
+        </tr>
+    </table>
+
+    <script>
+        function updateDateTime() {
+            let now = new Date();
+
+            // Format Date (DD-MM-YYYY)
+            let day = now.getDate();
+            let month = now.getMonth() + 1; // Months are zero-based
+            let year = now.getFullYear();
+            let formattedDate = (day < 10 ? "0" : "") + day + "-" + 
+                                (month < 10 ? "0" : "") + month + "-" + year;
+
+            // Format Time (HH:MM:SS)
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+            let formattedTime = (hours < 10 ? "0" : "") + hours + ":" + 
+                                (minutes < 10 ? "0" : "") + minutes + ":" + 
+                                (seconds < 10 ? "0" : "") + seconds;
+
+            // Update HTML elements
+            document.getElementById("currentDate").innerText = formattedDate;
+            document.getElementById("currentTime").innerText = formattedTime;
+        }
+
+        // Update time every second
+        setInterval(updateDateTime, 1000);
+
+        // Call once immediately to avoid initial delay
+        updateDateTime();
+    </script>
+
+</body>
+</html>

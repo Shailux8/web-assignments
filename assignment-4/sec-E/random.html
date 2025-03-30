@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number & AJAX Request</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        .container { width: 50%; margin: auto; padding: 20px; border: 2px solid #000000; border-radius: 10px; }
+        h2 { color: #007BFF; }
+        button { padding: 10px 20px; font-size: 16px; margin-top: 10px; cursor: pointer; background-color: #007BFF; color: white; border: none; border-radius: 5px; }
+        button:hover { background-color: #c515ce; }
+        #randomFact { font-style: italic; margin-top: 10px; color: #333; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2><u> Random Number Generator </u></h2>
+        <p><strong>Generated Number:</strong> <span id="randomNumber">---</span></p>
+        <button onclick="generateRandomNumber()">Generate Random Number</button>
+    </div>
+
+    <script>
+        function generateRandomNumber() {
+            // Generate a random number between 1 and 100
+            let randomNum = Math.floor(Math.random() * 100) + 1;
+            document.getElementById("randomNumber").innerText = randomNum;
+
+            // Fetch a math fact using AJAX
+            fetchMathFact(randomNum);
+        }
+
+        function fetchMathFact(number) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", `https://numbersapi.p.rapidapi.com/${number}/math?json=true`, true);
+            xhr.setRequestHeader("X-RapidAPI-Key", "YOUR_RAPIDAPI_KEY"); // Replace with your API key
+            xhr.setRequestHeader("X-RapidAPI-Host", "numbersapi.p.rapidapi.com");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let response = JSON.parse(xhr.responseText);
+                    document.getElementById("randomFact").innerText = response.text;
+                }
+            };
+            
+            xhr.send();
+        }
+    </script>
+
+</body>
+</html>
