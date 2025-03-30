@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Webpage Design</title>
+    <!-- <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
+<style>
+    /* General Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Mode Variables */
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --primary-color: #007bff;
+}
+.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #f4f4f4;
+}
+
+/* Header & Navigation */
+header {
+    background: var(--primary-color);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+.nav-menu li {
+    margin: 0 20px;
+}
+.nav-menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+.nav-menu li a:hover {
+    color: #ddd;
+}
+
+/* Banner Section */
+.banner {
+    background: url('https://source.unsplash.com/1600x900/?technology,code') center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+.banner::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+.banner-content {
+    position: relative;
+    z-index: 2;
+}
+.banner h1 {
+    font-size: 48px;
+    animation: fadeIn 2s;
+}
+.banner p {
+    font-size: 20px;
+}
+.cta-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.cta-btn:hover {
+    background: #0056b3;
+}
+
+/* Info Sections */
+.info-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+.service-card {
+    background: #fff;
+    padding: 25px;
+    margin: 20px;
+    display: inline-block;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    width: 300px;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--primary-color);
+    color: white;
+}
+.social-links a {
+    color: white;
+    font-size: 24px;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.social-links a:hover {
+    color: #ddd;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Parallax Effect */
+.banner {
+    background-attachment: fixed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column;
+        text-align: center;
+    }
+    .service-card {
+        width: 90%;
+    }
+    .banner h1 {
+        font-size: 36px;
+    }
+    .banner p {
+        font-size: 18px;
+    }
+}
+</style>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Welcome to Our Platform</h1>
+            <p>Empowering your success with innovative solutions.</p>
+            <button class="cta-btn">Explore Now</button>
+        </div>
+    </section>
+
+    <section id="about" class="info-section">
+        <h2>About Us</h2>
+        <p>We are a team of passionate professionals dedicated to delivering excellence.</p>
+    </section>
+
+    <section id="services" class="info-section">
+        <h2>Our Offerings</h2>
+        <div class="service-card">
+            <h3>Web Development</h3>
+            <p>We create modern, responsive, and user-friendly websites.</p>
+        </div>
+        <div class="service-card">
+            <h3>SEO Optimization</h3>
+            <p>Boost your online presence with our SEO strategies.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Connect with us on social media:</p>
+        <div class="social-links">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2025 All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
