@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        form {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px gray;
+            background-color: white;
+        }
+        label, input, select, textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .radio-group input {
+            width: auto;
+            margin: 0;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            width: 48%;
+            cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Employee Registration Form</h2>
+    <form action="#" method="post">
+        <div class="radio-group">
+            <label>Title:</label>
+            <input type="radio" name="title" value="Mr." required> <label>Mr.</label>
+            <input type="radio" name="title" value="Mrs."> <label>Mrs.</label>
+            <input type="radio" name="title" value="Ms."> <label>Ms.</label>
+        </div>
+
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" required>
+
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" required>
+
+        <label for="mail1">Mail Address 1:</label>
+        <input type="text" id="mail1" name="mail1" required>
+
+        <label for="mail2">Mail Address 2:</label>
+        <input type="text" id="mail2" name="mail2">
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required>
+
+        <label for="zip">Zip Code:</label>
+        <input type="text" id="zip" name="zip" required>
+
+        <label for="photo">Upload Photo:</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+
+        <div class="checkbox-group">
+            <label>Languages Known:</label>
+            <input type="checkbox" name="languages" value="Gujarati"> Gujarati
+            <input type="checkbox" name="languages" value="Hindi"> Hindi
+            <input type="checkbox" name="languages" value="English"> English
+            <input type="checkbox" name="languages" value="Marathi"> Marathi
+        </div>
+
+        <label for="info">Additional Information:</label>
+        <textarea id="info" name="info" rows="4"></textarea>
+
+        <button type="submit">Submit</button>
+        <button type="reset" style="background-color: #dc3545;">Reset</button>
+    </form>
+</body>
+</html>
