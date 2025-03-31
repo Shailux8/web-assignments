@@ -1,0 +1,14 @@
+Comparison: CGI vs. Servlets
+CGI (Common Gateway Interface) and Servlets are both used for creating dynamic web applications, but Servlets offer several advantages over CGI.
+
+CGI creates a new process for each user request, which makes it slow and resource-intensive. In contrast, Servlets run inside a Java Virtual Machine (JVM) and handle multiple requests using threads instead of processes, making them much more efficient.
+
+In terms of performance, CGI programs consume more memory and CPU resources because each request spawns a separate process. Servlets, however, run as single instances handling multiple requests via threads, significantly reducing resource consumption.
+
+Scalability is another major advantage of Servlets. Since CGI creates a new process for every request, it does not scale well under heavy traffic. Servlets, on the other hand, can efficiently handle thousands of requests without excessive resource usage.
+
+CGI is also platform-dependent, as it often relies on system-specific scripting languages like Perl or Python. Servlets, being Java-based, are platform-independent and can run on any system with a JVM.
+
+Security is another area where Servlets excel. Since CGI scripts run as separate system processes, they can be vulnerable to various security risks. Servlets operate within a controlled Java environment, making them more secure.
+
+Finally, maintenance and code reusability are much better in Servlets. Java provides built-in support for session tracking, database connectivity, and HTTP handling, whereas CGI scripts require additional effort to implement these features.

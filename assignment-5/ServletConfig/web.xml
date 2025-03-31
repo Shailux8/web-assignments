@@ -1,0 +1,19 @@
+<servlet>
+    <servlet-name>ConfigDemoServlet</servlet-name>
+    <servlet-class>ConfigDemoServlet</servlet-class>
+    <init-param>
+        <param-name>dbUrl</param-name>
+        <param-value>jdbc:mysql://localhost:3306/mydb</param-value>
+    </init-param>
+    <init-param>
+        <param-name>dbUser</param-name>
+        <param-value>root</param-value>
+    </init-param>
+    <init-param>
+        <param-name>dbPassword</param-name>
+        <param-value>password123</param-value>
+    </init-param>
+</servlet>
+<!-- 1. Deploy & Run the Servlet.
+
+2. Access it at: http://localhost:8080/your-app/config-demo. -->
